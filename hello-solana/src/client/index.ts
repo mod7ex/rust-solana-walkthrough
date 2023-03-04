@@ -2,7 +2,6 @@
 import {
     Keypair,
     Connection,
-    PublicKey,
     LAMPORTS_PER_SOL,
     TransactionInstruction,
     Transaction,
@@ -14,8 +13,8 @@ import path from "path";
 
 // prettier-ignore
 const PROGRAM_KEYPAIR_PATH = path.join(
-    path.resolve(__dirname, "../"),
-    "keypair.json"
+    path.resolve(__dirname, "../program/target/deploy"),
+    "hello_solana-keypair.json"
 );
 
 const readKeyData = (path: string) =>
@@ -58,7 +57,7 @@ const main = async () => {
 
   /**
    *
-   * COnduct a transaction with our program
+   * Conduct a transaction with our program
    */
   console.log("--Pinging Program", programId.toBase58());
   const instruction = new TransactionInstruction({
@@ -75,4 +74,4 @@ const main = async () => {
   await sendAndConfirmTransaction(connection, new Transaction().add(instruction), [triggerKeyPair]);
 };
 
-main();
+main().then(() => console.log("Done"));

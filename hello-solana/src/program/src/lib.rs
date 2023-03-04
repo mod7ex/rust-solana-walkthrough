@@ -1,21 +1,20 @@
-#![allow(unused)]
-
 use solana_program::{
-    account_info::AccountInfo,
+    account_info::{next_account_info, AccountInfo},
     entrypoint,
     entrypoint::ProgramResult,
     msg,
-    pubkey::Pubkey, stake::instruction
+    program_error::ProgramError,
+    pubkey::Pubkey,
 };
 
 entrypoint!(process_instruction);
 
-fn process_instruction(
-    program_id: &Pubkey,
-    accounts: &[AccountInfo],
-    instruction_data: &[u8]
+pub fn process_instruction(
+    program_id: &Pubkey, // Public key of the account the hello world program was loaded into
+    accounts: &[AccountInfo], // The account to say hello to
+    _instruction_data: &[u8], // Ignored, all helloworld instructions are hellos
 ) -> ProgramResult {
-    msg!("Hello SOlana (from Rust)");
+    msg!("Hello Solana (from Rust)");
 
     Ok(())
 }

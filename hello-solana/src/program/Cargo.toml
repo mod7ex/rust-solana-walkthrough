@@ -1,5 +1,5 @@
 [package]
-name = "program"
+name = "hello_solana"
 version = "0.1.0"
 edition = "2021"
 
@@ -13,4 +13,5 @@ solana-program-test = "1.15.2"
 solana-sdk = "1.15.2"
 
 [lib]
+name = "hello_solana"
 crate-type = ["cdylib", "lib"]
